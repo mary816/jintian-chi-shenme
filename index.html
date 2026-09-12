@@ -9,12 +9,21 @@
     <link rel="stylesheet" href="styles/app.css" />
   </head>
   <body>
-    <section id="splash-screen" class="splash-screen" aria-label="今天呢开屏" role="button" tabindex="0">
-      <div class="splash-artwork">
-        <img class="splash-reference" src="assets/splash/todayni-background.png" alt="" />
-        <img class="splash-handwriting" src="assets/splash/todayni-handwriting.png" alt="今天呢" />
-        <img class="splash-tagline" src="assets/splash/todayni-tagline.png" alt="今天，做点什么呢？" />
-      </div>
+    <section id="splash-screen" class="splash-screen" aria-label="今天呢开屏，点击进入" role="button" tabindex="0">
+      <main class="splash" aria-label="今天呢开屏">
+        <div class="orb orb--top" aria-hidden="true"></div>
+        <div class="orb orb--left" aria-hidden="true"></div>
+        <div class="orb orb--right" aria-hidden="true"></div>
+        <svg class="linework linework--front" viewBox="0 0 100 177.78" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M -3,37 C 16,35 31,24 42,-4" />
+          <path transform="translate(0 -0.8)" d="M 39,152 C 27,143 27,133 39,130 C 58,126 78,132 95,143 C 103,148 109,153 115,159" />
+        </svg>
+        <section class="brand">
+          <img class="logo-image" src="assets/splash/todayni-logo-olive.png" alt="今天呢" />
+          <p class="tagline">－ 今天，做点什么呢？ －</p>
+        </section>
+        <div class="strokes" aria-hidden="true"><i></i><i></i></div>
+      </main>
     </section>
     <main id="app-viewport" class="app-viewport" aria-label="今天吃什么">
       <header class="header-section">
