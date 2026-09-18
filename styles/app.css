@@ -4,7 +4,7 @@ html, body { width: 100%; height: 100%; height: 100dvh; overflow: hidden; backgr
 body { display: block; color: var(--text-main); font-family: "Source Han Sans SC", sans-serif; }
 button { font: inherit; }
 .splash {
-  --paper: #F9F7F1;
+  --paper: #FCFAF4;
   --ink: #969281;
   --mint: #DCE8DE;
   --lemon: #F8ECA9;
