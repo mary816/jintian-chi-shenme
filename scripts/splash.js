@@ -1,4 +1,4 @@
-export function createSplashController({ splash, delay = 2000, schedule = setTimeout, cancel = clearTimeout }) {
+export function createSplashController({ splash, delay = 2000, schedule = setTimeout, cancel = clearTimeout, onDismiss = () => {} }) {
   let timerId;
   let hasDismissed = false;
 
@@ -7,6 +7,7 @@ export function createSplashController({ splash, delay = 2000, schedule = setTim
     hasDismissed = true;
     cancel(timerId);
     splash.classList.add("is-leaving");
+    onDismiss();
   }
 
   function start() {

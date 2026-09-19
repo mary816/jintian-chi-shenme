@@ -1,4 +1,5 @@
 import { foodPool } from "./food-data.js";
+import { createHomeController } from "./home.js";
 import { createSplashController } from "./splash.js";
 
 const TRANSITION_MS = 320;
@@ -52,9 +53,30 @@ export function createDrawController({ pool, elements, wait = (ms) => new Promis
 
 if (typeof document !== "undefined") {
   const splash = document.querySelector("#splash-screen");
+  const homeToast = document.querySelector("#home-toast");
+  let toastTimer;
+  const showHome = () => { document.body.dataset.view = "home"; };
+  const showDraw = () => { document.body.dataset.view = "draw"; };
+  const showPlaceholder = (message) => {
+    homeToast.textContent = message;
+    homeToast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => homeToast.classList.remove("show"), 1800);
+  };
+  const homeController = createHomeController({ showHome, showDraw, showPlaceholder });
+
   if (splash) {
-    createSplashController({ splash }).start();
+    createSplashController({ splash, onDismiss: homeController.openHome }).start();
   }
+
+  document.querySelectorAll("[data-home-action]").forEach((action) => {
+    action.addEventListener("click", () => {
+      const type = action.dataset.homeAction;
+      if (type === "draw") homeController.openDraw();
+      if (type === "home") homeController.openHome();
+      if (type === "placeholder") homeController.openPlaceholder(action.dataset.homeNotice);
+    });
+  });
 
   const elements = {
     card: document.querySelector("#card-box"),
