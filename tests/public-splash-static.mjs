@@ -16,6 +16,10 @@ assert.match(css, /\.splash\s*\{[^}]*--splash-title-y:\s*29%/i,
   "the public splash must use the approved title position");
 assert.match(css, /\.splash\s*\{[^}]*--splash-overlay-opacity:\s*\.98/i,
   "the public splash must use the approved overlay opacity");
+assert.match(css, /\.splash\s*\{[^}]*background:\s*#FBF8F1;[^}]*background:\s*radial-gradient\(circle at 50% 43%,\s*rgba\(255,\s*255,\s*255,\s*\.72\)/i,
+  "the public splash must retain a legacy-safe cream fallback and rgba gradient");
+assert.doesNotMatch(css, /\.splash\s*\{[^}]*rgb\(255 255 255\s*\//i,
+  "the public splash must avoid unsupported space-separated rgb alpha syntax");
 assert.match(css, /\.splash\s*\{[^}]*--splash-enter-y:\s*94%/i,
   "the public splash must use the approved enter position");
 assert.match(css, /\.splash\s*\{[^}]*--splash-enter-size:\s*11px/i,
