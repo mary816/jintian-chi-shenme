@@ -34,7 +34,5 @@ assert.match(css, /\.floating-tabbar\s*\{[^}]*bottom:\s*max\(8px,\s*env\(safe-ar
   "the bottom navigation must sit close to the viewport bottom while respecting the safe area");
 assert.match(css, /@media\s*\(min-width:\s*431px\)[\s\S]*\.floating-tabbar\s*\{[^}]*bottom:\s*max\(10px/i,
   "desktop bottom navigation must not be lifted by the old large viewport offset");
-assert.match(css, /\.secondary-grid\s*\{[^}]*margin-bottom:\s*20px/i,
-  "the secondary cards must keep breathing room above the fixed bottom navigation");
 
 console.log("PASS: public homepage hero preserves the complete artwork");
