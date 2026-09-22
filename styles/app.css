@@ -94,12 +94,9 @@ body[data-view="home"] .home-viewport { opacity: 1; pointer-events: auto; } body
 html:has(body[data-view="home"]) { overflow-x: hidden; overflow-y: auto; }
 body[data-view="home"] { height: auto; min-height: 100dvh; overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-y: contain; }
 body[data-view="draw"] { overflow: hidden; }
-.home-viewport { position: relative; inset: auto; overflow-x: visible; overflow-y: visible; }
-.floating-tabbar { bottom: max(4px, env(safe-area-inset-bottom)); padding: 4px; transform: translateZ(0); }
+.home-viewport { position: relative; inset: auto; overflow-x: visible; overflow-y: visible; padding-bottom: calc(18px + env(safe-area-inset-bottom)); }
+.floating-tabbar { position: relative; inset: auto; right: auto; bottom: auto; left: auto; z-index: 2; width: 100%; margin: 18px 0 0; flex: 0 0 auto; padding: 4px; transform: none; }
 .floating-tabbar .tab { min-height: 44px; }
-@media (min-width: 431px) { .floating-tabbar { bottom: max(4px, env(safe-area-inset-bottom)); } }
-.home-viewport { padding-bottom: calc(18px + env(safe-area-inset-bottom)); }
-.floating-tabbar { position: relative; inset: auto; right: auto; bottom: auto; left: auto; width: 100%; margin: 18px 0 0; flex: 0 0 auto; transform: none; }
 
 /* Approved opening overlay: the real homepage remains faintly visible underneath. */
 html:has(body[data-view="splash"]), body[data-view="splash"] { background: #FBF8F1; }
