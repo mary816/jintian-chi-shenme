@@ -90,6 +90,14 @@ body[data-view="home"], body[data-view="draw"] { background: #FBF8F1; }
 body[data-view="home"] .home-viewport { opacity: 1; pointer-events: auto; } body[data-view="draw"] .app-viewport { opacity: 1; pointer-events: auto; }
 @media (min-width: 431px) { .home-viewport { min-height: min(100dvh - 40px, 850px); border-radius: 30px; box-shadow: 0 22px 54px rgba(79, 68, 45, .18); }.floating-tabbar { right: calc(50% - 197px); left: calc(50% - 197px); bottom: max(30px, calc((100dvh - 850px) / 2 + 14px)); } }
 
+/* Keep the homepage on the native document scroll path for smoother touch scrolling. */
+html:has(body[data-view="home"]) { overflow-x: hidden; overflow-y: auto; }
+body[data-view="home"] { height: auto; min-height: 100dvh; overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-y: contain; }
+body[data-view="draw"] { overflow: hidden; }
+.home-viewport { position: relative; inset: auto; overflow-x: visible; overflow-y: visible; }
+.floating-tabbar { bottom: max(8px, env(safe-area-inset-bottom)); transform: translateZ(0); }
+@media (min-width: 431px) { .floating-tabbar { bottom: max(10px, env(safe-area-inset-bottom)); } }
+
 /* Approved opening overlay: the real homepage remains faintly visible underneath. */
 html:has(body[data-view="splash"]), body[data-view="splash"] { background: #FBF8F1; }
 body[data-view="splash"] .home-viewport { opacity: 1; pointer-events: none; }
