@@ -98,6 +98,8 @@ body[data-view="draw"] { overflow: hidden; }
 .floating-tabbar { bottom: max(4px, env(safe-area-inset-bottom)); padding: 4px; transform: translateZ(0); }
 .floating-tabbar .tab { min-height: 44px; }
 @media (min-width: 431px) { .floating-tabbar { bottom: max(4px, env(safe-area-inset-bottom)); } }
+.home-viewport { padding-bottom: calc(18px + env(safe-area-inset-bottom)); }
+.floating-tabbar { position: relative; inset: auto; right: auto; bottom: auto; left: auto; width: 100%; margin: 18px 0 0; flex: 0 0 auto; transform: none; }
 
 /* Approved opening overlay: the real homepage remains faintly visible underneath. */
 html:has(body[data-view="splash"]), body[data-view="splash"] { background: #FBF8F1; }
