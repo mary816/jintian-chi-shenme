@@ -30,9 +30,13 @@ assert.match(css, /body\[data-view=["']home["']\]\s*\{[^}]*overflow-y:\s*auto/i,
   "the home body must allow native scrolling after the splash transition");
 assert.match(css, /\.home-viewport\s*\{[^}]*position:\s*relative[^}]*overflow-y:\s*visible/i,
   "the homepage must not create a nested fixed scroll container");
-assert.match(css, /\.floating-tabbar\s*\{[^}]*bottom:\s*max\(8px,\s*env\(safe-area-inset-bottom\)\)/i,
+assert.match(css, /\.floating-tabbar\s*\{[^}]*bottom:\s*max\(4px,\s*env\(safe-area-inset-bottom\)\)/i,
   "the bottom navigation must sit close to the viewport bottom while respecting the safe area");
-assert.match(css, /@media\s*\(min-width:\s*431px\)[\s\S]*\.floating-tabbar\s*\{[^}]*bottom:\s*max\(10px/i,
+assert.match(css, /@media\s*\(min-width:\s*431px\)[\s\S]*\.floating-tabbar\s*\{[^}]*bottom:\s*max\(4px/i,
   "desktop bottom navigation must not be lifted by the old large viewport offset");
+assert.match(css, /\.floating-tabbar\s*\{[^}]*padding:\s*4px/i,
+  "the bottom navigation must use a more compact outer height");
+assert.match(css, /\.tab\s*\{[^}]*min-height:\s*44px/i,
+  "the bottom navigation tabs must use a more compact height");
 
 console.log("PASS: public homepage hero preserves the complete artwork");

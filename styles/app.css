@@ -95,8 +95,9 @@ html:has(body[data-view="home"]) { overflow-x: hidden; overflow-y: auto; }
 body[data-view="home"] { height: auto; min-height: 100dvh; overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-y: contain; }
 body[data-view="draw"] { overflow: hidden; }
 .home-viewport { position: relative; inset: auto; overflow-x: visible; overflow-y: visible; }
-.floating-tabbar { bottom: max(8px, env(safe-area-inset-bottom)); transform: translateZ(0); }
-@media (min-width: 431px) { .floating-tabbar { bottom: max(10px, env(safe-area-inset-bottom)); } }
+.floating-tabbar { bottom: max(4px, env(safe-area-inset-bottom)); padding: 4px; transform: translateZ(0); }
+.floating-tabbar .tab { min-height: 44px; }
+@media (min-width: 431px) { .floating-tabbar { bottom: max(4px, env(safe-area-inset-bottom)); } }
 
 /* Approved opening overlay: the real homepage remains faintly visible underneath. */
 html:has(body[data-view="splash"]), body[data-view="splash"] { background: #FBF8F1; }
