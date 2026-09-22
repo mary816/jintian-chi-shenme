@@ -40,5 +40,19 @@ assert.match(css, /\.floating-tabbar\s*\{[^}]*padding:\s*4px/i,
   "the bottom navigation must use a more compact outer height");
 assert.match(css, /\.tab\s*\{[^}]*min-height:\s*44px/i,
   "the bottom navigation tabs must use a more compact height");
+assert.match(css, /\.floating-tabbar\s*\{[^}]*transform:\s*translate\(1px,\s*8px\)/i,
+  "the public bottom navigation must use the approved overall position");
+assert.match(css, /\.floating-tabbar\s+\.tab\s*\{[^}]*font-size:\s*11\.5px/i,
+  "the public bottom navigation must use the approved text size");
+assert.match(css, /\.floating-tabbar\s+\.tab\s+i\s*\{[^}]*width:\s*14px[^}]*transform:\s*translate\(0,\s*2px\)/i,
+  "the public bottom navigation must use the approved icon size and vertical position");
+assert.match(css, /\.floating-tabbar\s+\.tab\s*>\s*span\s*\{[^}]*transform:\s*translate\(0,\s*1px\)/i,
+  "the public bottom navigation labels must use the approved vertical position");
+assert.match(css, /body\[data-view=["']home["']\]\s*\{[^}]*touch-action:\s*pan-y/i,
+  "the public homepage must explicitly allow vertical touch scrolling");
+assert.doesNotMatch(css, /body\[data-view=["']home["']\]\s*\{[^}]*overscroll-behavior-y:\s*contain/i,
+  "the public homepage must not constrain the body scroll boundary");
+assert.match(css, /@media\s*\(max-width:\s*430px\)[\s\S]*\.home-viewport\s*\{[^}]*min-height:\s*calc\(100dvh\s*\+\s*48px\)/i,
+  "the public phone homepage must keep a compact scroll runway");
 
 console.log("PASS: public homepage hero preserves the complete artwork");
