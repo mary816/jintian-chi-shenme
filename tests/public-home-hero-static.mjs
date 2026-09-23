@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 
 const css = await readFile(new URL("../styles/app.css", import.meta.url), "utf8");
 const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
@@ -10,6 +10,12 @@ assert.doesNotMatch(css, /\.home-viewport\s+\.top-banner-img\s*\{[^}]*object-fit
   "the homepage hero must not crop the right-side bird on phones");
 assert.match(html, /class=["']primary-card["']/i,
   "the public homepage must use the approved textured primary card");
+assert.match(html, /<img[^>]*class=["']top-banner-img["'][^>]*src=["']assets\/home\/top-banner-860\.jpg["'][^>]*srcset=["'][^"']*top-banner-430\.jpg\s+430w[^"']*top-banner-860\.jpg\s+860w[^"']*["'][^>]*width=["']1536["'][^>]*height=["']1024["']/i,
+  "the public homepage hero must offer a compressed responsive source without changing its intrinsic aspect ratio");
+await Promise.all([
+  "../assets/home/top-banner-430.jpg",
+  "../assets/home/top-banner-860.jpg",
+].map((path) => access(new URL(path, import.meta.url))));
 assert.match(html, /class=["']card-deck["'][\s\S]*class=["']mini-card front["']/i,
   "the public homepage must include the approved stacked card composition");
 assert.match(html, /WHAT SHALL WE DO TODAY\?/i,
