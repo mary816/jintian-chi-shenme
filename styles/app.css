@@ -10,7 +10,10 @@ button { font: inherit; }
   --lemon: #F8ECA9;
   --lemon-stroke: #F6E792;
   --line: rgba(255, 255, 255, .86);
-  position: relative;
+  position: fixed;
+  z-index: 5;
+  right: 0;
+  left: 0;
   width: min(100vw, calc(100dvh * 9 / 16));
   height: 100dvh;
   margin: 0 auto;
@@ -101,10 +104,10 @@ body[data-view="draw"] { overflow: hidden; }
 .floating-tabbar .tab > span { transform: translate(0, 1px); }
 @media (max-width: 430px) { .home-viewport { min-height: calc(100dvh + 48px); } }
 
-/* Approved opening overlay: the real homepage remains faintly visible underneath. */
+/* Keep the current splash composition; only the title's text treatment follows the reference. */
 html:has(body[data-view="splash"]), body[data-view="splash"] { background: #FBF8F1; }
 body[data-view="splash"] .home-viewport { opacity: 1; pointer-events: none; }
-.splash { --splash-title-y: 29%; --splash-title-scale: 1; --splash-overlay-opacity: .98; --splash-enter-x: 50%; --splash-enter-y: 94%; --splash-enter-size: 11px; position: fixed; z-index: 5; inset: 0; width: min(100%, 414px); height: 100dvh; margin: 0 auto; overflow: hidden; color: #8C846F; background: #FBF8F1; background: radial-gradient(circle at 50% 43%, rgba(255, 255, 255, .72) 0, rgba(255, 255, 255, 0) 31%), linear-gradient(180deg, rgba(251, 248, 241, .995) 0%, rgba(251, 248, 241, .97) 54%, rgba(251, 248, 241, .91) 100%); opacity: var(--splash-overlay-opacity); }
-.splash-copy { position: absolute; top: var(--splash-title-y); left: 50%; width: min(74%, 300px); text-align: center; transform: translate(-50%, -50%) scale(var(--splash-title-scale)); transform-origin: center; }.splash-copy img { display: block; width: 100%; height: auto; }.splash-copy p { margin: 16px 0 0; color: #8C846F; font-size: 13px; letter-spacing: .13em; }
+.splash { --splash-title-x: 46%; --splash-title-y: 29%; --splash-title-scale: 1; --splash-overlay-opacity: .98; --splash-enter-x: 50%; --splash-enter-y: 94%; --splash-enter-size: 11px; position: fixed; z-index: 5; inset: 0; width: min(100%, 414px); height: 100dvh; margin: 0 auto; overflow: hidden; color: #8C846F; background: #FBF8F1; background: radial-gradient(circle at 50% 43%, rgba(255, 255, 255, .72) 0, rgba(255, 255, 255, 0) 31%), linear-gradient(180deg, rgba(251, 248, 241, .995) 0%, rgba(251, 248, 241, .97) 54%, rgba(251, 248, 241, .91) 100%); opacity: var(--splash-overlay-opacity); }
+.splash-copy { position: absolute; top: var(--splash-title-y); left: var(--splash-title-x); width: min(74%, 300px); text-align: center; transform: translate(-50%, -50%) scale(var(--splash-title-scale)); transform-origin: center; }.splash-copy img { display: block; width: 100%; height: auto; }.splash-copy p { margin: 16px 0 0; color: #8C846F; font-family: "Today Noto Sans SC", "Source Han Sans SC", sans-serif; font-size: 13px; font-weight: 300; letter-spacing: .38em; white-space: nowrap; transform: translate(33px, -6px); }
 .splash-enter { position: absolute; top: var(--splash-enter-y); left: var(--splash-enter-x); display: inline-block; color: #8C846F; font-size: var(--splash-enter-size); font-weight: 700; letter-spacing: .2em; opacity: .72; transform: translate(-50%, -50%); }.splash-enter::before { content: ""; display: block; width: 5px; height: 5px; margin: 0 auto 12px; border-radius: 50%; background: currentColor; }
 @media (prefers-reduced-motion: no-preference) { .splash-copy { animation: splash-settle .72s cubic-bezier(.22, .76, .26, 1) both; } @keyframes splash-settle { from { opacity: 0; transform: translate(-50%, calc(-50% + 8px)) scale(var(--splash-title-scale)); } to { opacity: 1; transform: translate(-50%, -50%) scale(var(--splash-title-scale)); } } }
